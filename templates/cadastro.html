@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro{% endblock %}
+
+{% block centro %}
+    <h1>Cadastro de Novo Médico</h1>
+    <form id="cadastro-form" method="post">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="field">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="field">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="field">
+                <label for="first_name">Nome:</label>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+            <div class="field">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="field">
+                <label for="matricula">Matrícula:</label>
+                <input type="text" id="matricula" name="matricula" required>
+            </div>
+            <div class="field">
+                <label for="crm">CRM:</label>
+                <input type="text" id="crm" name="crm" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="field">
+                <label for="cns">CNS:</label>
+                <input type="text" id="cns" name="cns" required>
+            </div>
+            <div class="field">
+                <label for="celular">Celular:</label>
+                <input type="text" id="celular" name="celular" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="field">
+                <label for="trak">Trak:</label>
+                <input type="text" id="trak" name="trak" required>
+            </div>
+            <div class="field">
+                <label for="sisreg">Sisreg:</label>
+                <input type="text" id="sisreg" name="sisreg" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="field">
+                <label for="sisrep">Sisrep:</label>
+                <input type="text" id="sisrep" name="sisrep" required>
+            </div>
+            <div class="field">
+                <label for="especialidade">Especialidade:</label>
+                <select id="especialidade" name="especialidade" required>
+                    {% for especialidade in especialidades %}
+                        <option value="{{ especialidade.id }}">{{ especialidade.especialidade }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+{% endblock %}

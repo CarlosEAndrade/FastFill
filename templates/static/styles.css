@@ -1,0 +1,190 @@
+/* Importação das fontes */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+body {
+    background-color: #000;
+    color: #00FF00;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Press Start 2P', cursive;
+}
+
+a {
+    color: #00FF00;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'VT323', monospace;
+    color: #00FF00;
+    background-color: transparent;
+    border: none;
+}
+
+form input, form select, form button, form textarea {
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'VT323', monospace;
+    background-color: transparent;
+    color: #00FF00;
+    border: 1px solid #00FF00;
+    padding: 5px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input:focus, select:focus, button:focus, textarea:focus {
+    outline: none;
+    border-color: #00FF00;
+}
+
+.header, .footer {
+    padding: 10px;
+    border-bottom: 1px solid #00FF00;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer {
+    border-top: 1px solid #00FF00;
+    border-bottom: none;
+}
+
+.site-name {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.datetime {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.green-hr {
+    border: 1px solid #00FF00;
+}
+
+.group {
+    border: 1px solid #00FF00;
+    padding: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.group-title {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: #000;
+    padding: 0 5px;
+    font-family: 'VT323', monospace;
+}
+
+/* Opções de Preenchimento Lado a Lado */
+.radio-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.radio-group label {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    border: none;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Campo Nome do Hospital Inline */
+.inline-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.inline-field label {
+    margin-right: 10px;
+}
+
+/* Layout Flexbox */
+.content {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.sidebar-left, .sidebar-right {
+    flex: 1;
+    padding: 10px;
+}
+
+.main-content {
+    flex: 3;
+    padding: 10px;
+}
+
+/* Esconder barras laterais quando vazias */
+.sidebar-left:empty, .sidebar-right:empty {
+    display: none;
+}
+
+/* Customizações para o layout do formulário */
+.field {
+    margin-bottom: 10px;
+}
+
+.group-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.full-width {
+    flex: 1 1 100%;
+    max-width: 100%;
+}
+
+.half-width {
+    flex: 1 1 48%;
+    max-width: 48%;
+    margin-right: 2%;
+}
+
+.third-width {
+    flex: 1 1 32%;
+    max-width: 32%;
+    margin-right: 2%;
+}
+
+/* Remover margem à direita no último elemento de cada linha */
+.half-width:nth-of-type(2n),
+.third-width:nth-of-type(3n) {
+    margin-right: 0;
+}

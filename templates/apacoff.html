@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% block centro %}
+<h3>Preenchimento de APAC</h3>
+
+<form id="apacoff-form" method="POST">
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="fill-method" value="manual" checked>
+            Preencher manualmente
+        </label>
+        <label>
+            <input type="radio" name="fill-method" value="trak">
+            Buscar dados no trak
+        </label>
+    </div>
+
+    <hr class="green-hr">
+
+    <div class="group-content">
+        <div class="field half-width">
+            <label for="hospital-name">Nome do Hospital:</label>
+            <input type="text" id="hospital-name" name="hospital-name" value="HRS">
+        </div>
+        <div class="field half-width">
+            <label for="request-date">Data:</label>
+            <input type="date" id="request-date" name="request-date">
+        </div>
+    </div>
+
+    <div id="manual-fields" class="group">
+        <div class="group-title">Dados do Paciente</div>
+        <div class="group-content">
+            <div class="field third-width">
+                <label for="patient-name">Nome do Paciente:</label>
+                <input type="text" id="patient-name" name="patient-name">
+            </div>
+            <div class="field third-width">
+                <label for="patient-sex">Sexo:</label>
+                <select id="patient-sex" name="patient-sex">
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+            </div>
+            <div class="field third-width">
+                <label for="patient-dob">Data de Nascimento:</label>
+                <input type="date" id="patient-dob" name="patient-dob">
+            </div>
+            <div class="field half-width">
+                <label for="patient-chart">Prontuário:</label>
+                <input type="text" id="patient-chart" name="patient-chart">
+            </div>
+            <div class="field half-width">
+                <label for="patient-cns">CNS do Paciente:</label>
+                <input type="text" id="patient-cns" name="patient-cns">
+            </div>
+            <div class="field third-width">
+                <label for="patient-phone1">Telefone 1:</label>
+                <input type="text" id="patient-phone1" name="patient-phone1">
+            </div>
+            <div class="field third-width">
+                <label for="patient-phone2">Telefone 2:</label>
+                <input type="text" id="patient-phone2" name="patient-phone2">
+            </div>
+            <div class="field third-width">
+                <label for="patient-mother">Nome da Mãe:</label>
+                <input type="text" id="patient-mother" name="patient-mother">
+            </div>
+            <div class="field third-width">
+                <label for="patient-address">Endereço:</label>
+                <input type="text" id="patient-address" name="patient-address">
+            </div>
+            <div class="field third-width">
+                <label for="patient-city">Cidade:</label>
+                <input type="text" id="patient-city" name="patient-city">
+            </div>
+            <div class="field third-width">
+                <label for="patient-state">Estado:</label>
+                <input type="text" id="patient-state" name="patient-state">
+            </div>
+        </div>
+    </div>
+
+    <div class="group">
+        <div class="group-title">Exame</div>
+        <div class="group-content">
+            <div class="field third-width">
+                <label for="exam-name">Nome do Exame:</label>
+                <input type="text" id="exam-name" name="exam-name">
+            </div>
+            <div class="field third-width">
+                <label for="diagnosis">Diagnóstico:</label>
+                <input type="text" id="diagnosis" name="diagnosis">
+            </div>
+            <div class="field third-width">
+                <label for="cid">CID:</label>
+                <input type="text" id="cid" name="cid">
+            </div>
+            <div class="field full-width">
+                <label for="clinical-history">História Clínica:</label>
+                <textarea id="clinical-history" name="clinical-history"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="group">
+        <div class="group-title">Dados do Solicitante</div>
+        <div class="group-content">
+            <div class="field half-width">
+                <label for="requester-name">Nome do Solicitante:</label>
+                <input type="text" id="requester-name" name="requester-name">
+            </div>
+            <div class="field half-width">
+                <label for="requester-cpf-cns">CPF/CNS do Solicitante:</label>
+                <input type="text" id="requester-cpf-cns" name="requester-cpf-cns">
+            </div>
+            <div class="field half-width trak-fields" style="display: none;">
+                <label for="trak-login">Login do Trak:</label>
+                <input type="text" id="trak-login" name="trak-login">
+            </div>
+            <div class="field half-width trak-fields" style="display: none;">
+                <label for="trak-password">Senha do Trak:</label>
+                <input type="password" id="trak-password" name="trak-password">
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit">Enviar</button>
+    </div>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const manualFields = document.getElementById('manual-fields');
+    const trakFields = document.querySelectorAll('.trak-fields');
+    const fillMethodRadios = document.querySelectorAll('input[name="fill-method"]');
+
+    fillMethodRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'manual') {
+                manualFields.style.display = 'block';
+                trakFields.forEach(field => field.style.display = 'none');
+            } else {
+                manualFields.style.display = 'none';
+                trakFields.forEach(field => field.style.display = 'block');
+            }
+        });
+    });
+
+    // Inicialmente esconder os campos manuais se "Buscar dados no trak" estiver selecionado
+    if (document.querySelector('input[name="fill-method"]:checked').value === 'trak') {
+        manualFields.style.display = 'none';
+        trakFields.forEach(field => field.style.display = 'block');
+    }
+});
+</script>
+{% endblock %}
